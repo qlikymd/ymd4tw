@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ymd4tw</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- bootstrap 3.0.2 -->
+        <link href="http://almsaeedstudio.com/AdminLTE/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Ionicons -->
+        <link href="http://almsaeedstudio.com/AdminLTE/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <!-- Morris chart -->
+        <link href="http://almsaeedstudio.com/AdminLTE/css/morris/morris.css" rel="stylesheet" type="text/css" />
+        <!-- jvectormap -->
+        <link href="http://almsaeedstudio.com/AdminLTE/css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+        <!-- Date Picker -->
+        <link href="http://almsaeedstudio.com/AdminLTE/css/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+        <!-- Daterange picker -->
+        <link href="http://almsaeedstudio.com/AdminLTE/css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+        <!-- bootstrap wysihtml5 - text editor -->
+        <link href="http://almsaeedstudio.com/AdminLTE/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+        <!-- Theme style -->
+        <link href="http://almsaeedstudio.com/AdminLTE/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-static-top" role="navigation">
+    <ul class="menu">
+    <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
+    <% if user_signed_in? %> 
+      <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
+      <!-- *_path はUserモデルを作成したときに、
+        deviseにより自動で作成されてますので、rake routesで確認できます -->
+      <!--
+Logged in as <strong><%= current_user.email %></strong>.
+      <%= link_to 'プロフィール変更', edit_user_registration_path %> |
+-->
+<!--
+      <%= link_to "logout", destroy_user_session_path, method: :delete %>
+-->
+    <% else %>
+      <%= link_to "サインイン", new_user_registration_path %> |
+      <%= link_to "ログイン", new_user_session_path %>
+    <% end %>
+    </ul>
+  </nav>
+</header>
+
+<!--
+show any messages from system
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+-->
+
+<%= yield %>
+
+</body>
+</html>
